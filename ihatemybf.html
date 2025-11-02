@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closer to Greatness</title>
+    <!-- Load Google Font for retro style --><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS for styling --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and console base styling */
+        body {
+            font-family: 'Press Start 2P', monospace;
+            background-color: #1a1a1a; /* Dark console background */
+            color: #00ffff; /* Bright console blue */
+            text-shadow: 0 0 5px #00ffff; /* Subtle glow effect for text */
+        }
+
+        /* Override Tailwind defaults for the monospace font */
+        .text-3xl { font-size: 1.5rem; }
+        .text-lg { font-size: 0.75rem; }
+        .text-xl { font-size: 1rem; }
+        .text-2xl { font-size: 1.25rem; }
+
+        /* Styles for the confetti (blue and white hearts) */
+        .confetti-piece {
+            position: absolute;
+            opacity: 0;
+            animation: confetti-fall 2s forwards ease-out;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Keyframes for confetti animation */
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(-50px) rotate(30deg) scale(1.5);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* --- Optional CRT/Scanline Effect --- */
+        /* Uncomment this block for a truly authentic retro feel */
+        /*
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+        }
+        */
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Console Card Container --><div class="w-full max-w-sm bg-black border-4 border-blue-500 rounded-none shadow-console p-6 md:p-8 transition-all duration-300">
+        <h1 class="text-3xl font-extrabold text-center mb-6 tracking-tighter" style="text-shadow: 0 0 8px #00ffff;">
+            mwah ♥
+        </h1>
+
+        <!-- Prompt Text --><p class="text-center text-lg font-medium mb-6">
+            get one step closer to greatness.
+        </p>
+
+        <!-- Input Field --><input type="text" id="code-input" placeholder="ACCESS_CODE >" 
+               class="w-full px-4 py-3 border-0 border-b-2 border-blue-500 bg-black text-blue-500 focus:outline-none focus:ring-0 mb-6 text-center text-xl transition-all duration-200"
+               autocapitalize="off" 
+               autocomplete="off"
+               style="text-shadow: 0 0 5px #00ffff;">
+
+        <!-- Submit Button --><button id="submit-button" 
+                class="w-full py-3 bg-blue-500 text-black font-bold text-lg rounded-none shadow-none hover:bg-blue-400 active:bg-blue-600 transition-all duration-150 focus:outline-none focus:ring-4 focus:ring-blue-300 border-2 border-blue-500">
+            enter the codeword and click here if u like ur begum (me)
+        </button>
+
+        <!-- Message Display Area --><div id="message-display" 
+             class="mt-8 min-h-[64px] flex items-center justify-center text-center text-2xl font-black rounded-none p-3 transition-all duration-500 border-2 border-blue-800"
+             style="text-shadow: 0 0 5px #00ffff;">
+            <!-- Message will appear here --></div>
+    </div>
+    
+    <!-- Hint at the bottom --><p class="text-center text-xs mt-6 text-blue-500" style="text-shadow: 0 0 3px #00ffff;">
+        (HINT: two words &lt;3)
+    </p>
+
+
+    <script>
+        // JavaScript logic for the code word check
+        const SECRET_CODE = 'azman mahrukh'; 
+
+        // Get references to the elements
+        const inputField = document.getElementById('code-input');
+        const submitButton = document.getElementById('submit-button');
+        const messageDisplay = document.getElementById('message-display');
+
+        /**
+         * Clears all dynamic styling classes from the message display.
+         */
+        function resetMessageStyle() {
+            // Base style for the message box
+            messageDisplay.className = 'mt-8 min-h-[64px] flex items-center justify-center text-center text-2xl font-black rounded-none p-3 transition-all duration-500 border-2';
+        }
+
+        /**
+         * Creates and launches confetti pieces with console aesthetic.
+         */
+        function launchConfetti() {
+            const confettiCount = 50; 
+            const colors = ['#00ffff', 'white']; // Bright blue and white hearts
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.color = color;
+                
+                // Random position across the top of the screen
+                confetti.style.left = Math.random() * 100 + 'vw'; 
+                confetti.style.top = -20 + 'px'; 
+                
+                // Random size
+                const size = Math.random() * 15 + 10; 
+                confetti.innerHTML = '&#x2665;'; // Heart Unicode
+                confetti.style.fontSize = size + 'px';
+                confetti.style.lineHeight = '1';
+
+                // Apply glow
+                confetti.style.textShadow = `0 0 ${size / 4}px ${color}`;
+                
+                // Random delay for a staggered effect
+                confetti.style.animationDelay = Math.random() * 1.5 + 's';
+
+                document.body.appendChild(confetti);
+
+                // Remove confetti after animation to clean up DOM
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+
+        /**
+         * Checks the entered code word and updates the display.
+         */
+        function checkCode() {
+            const userInput = inputField.value.trim().toLowerCase();
+            resetMessageStyle(); 
+
+            if (userInput === SECRET_CODE) {
+                // Correct code word (Success: Blue/Bright)
+                messageDisplay.textContent = 'i love u';
+                messageDisplay.classList.add('border-blue-500', 'text-blue-500', 'bg-black');
+                messageDisplay.style.textShadow = '0 0 8px #00ffff';
+                launchConfetti(); 
+            } else {
+                // Incorrect code word (Failure: Reddish/Warning)
+                messageDisplay.textContent = 'try again loser';
+                messageDisplay.classList.add('border-red-500', 'text-red-500', 'bg-black');
+                messageDisplay.style.textShadow = '0 0 8px #ff0000'; // Red console error glow
+            }
+        }
+
+        // Event listener for the button click
+        submitButton.addEventListener('click', checkCode);
+
+        // Event listener for the 'Enter' key press on the input field
+        inputField.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                checkCode();
+            }
+        });
+
+        // Initialize the message display with the default style
+        resetMessageStyle();
+        messageDisplay.classList.add('border-blue-800', 'text-blue-800', 'bg-black'); // Darker blue initial text
+        messageDisplay.textContent = 'Awaiting Command...';
+
+    </script>
+</body>
+</html>
