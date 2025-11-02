@@ -1,332 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>www.bestbf.com</title>
-    <!-- Load Google Font for retro style --><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <!-- Load Tailwind CSS for styling --><script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom font and base styling */
-        body {
-            font-family: 'Press Start 2P', monospace;
-            background: linear-gradient(135deg, #e0f2f7 0%, #a7d9f7 100%); /* Soft blue gradient */
-            color: white; /* Default text color */
-            overflow: hidden; /* Hide overflow for floating hearts/text */
-            position: relative; /* For absolute positioning of background elements */
-            min-height: 100vh;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.bestbf.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and base styling */
+        body {
+            font-family: 'Press Start 2P', monospace;
+            background: linear-gradient(135deg, #e0f2f7 0%, #a7d9f7 100%); /* Soft blue gradient */
+            color: white; /* Default text color */
+            overflow: hidden; /* Hide overflow for floating hearts/text */
+            position: relative; /* For absolute positioning of background elements */
+            min-height: 100vh;
+        }
 
-        /* Override Tailwind defaults for the monospace font */
-        .text-3xl { font-size: 1.5rem; }
-        .text-lg { font-size: 0.75rem; }
-        .text-xl { font-size: 1rem; }
-        .text-2xl { font-size: 1.25rem; }
+        /* Override Tailwind defaults for the monospace font */
+        .text-3xl { font-size: 1.5rem; }
+        .text-lg { font-size: 0.75rem; }
+        .text-xl { font-size: 1rem; }
+        .text-2xl { font-size: 1.25rem; }
 
-        /* General glow for all text, softer and blue */
-        .text-glow-blue {
-            text-shadow: 0 0 8px rgba(0, 191, 255, 0.7), 0 0 15px rgba(0, 191, 255, 0.4);
-        }
+        /* General glow for all text, softer and blue */
+        .text-glow-blue {
+            text-shadow: 0 0 8px rgba(0, 191, 255, 0.7), 0 0 15px rgba(0, 191, 255, 0.4);
+        }
 
-        /* Main Card */
-        .cute-card {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
-            border: 2px solid #87ceeb; /* Sky blue border */
-            border-radius: 20px; /* Rounded corners */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow */
-            color: #4682b4; /* Steel blue for card text */
-        }
-        .cute-card .text-glow-blue { /* Card's main title */
-            text-shadow: 0 0 6px rgba(135, 206, 250, 0.8), 0 0 12px rgba(135, 206, 250, 0.5);
-            color: #4682b4; /* Steel blue for title */
-        }
-        .cute-card input, .cute-card button {
-            font-family: 'Press Start 2P', monospace;
-        }
+        /* Main Card */
+        .cute-card {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            border: 2px solid #87ceeb; /* Sky blue border */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow */
+            color: #4682b4; /* Steel blue for card text */
+        }
+        .cute-card .text-glow-blue { /* Card's main title */
+            text-shadow: 0 0 6px rgba(135, 206, 250, 0.8), 0 0 12px rgba(135, 206, 250, 0.5);
+            color: #4682b4; /* Steel blue for title */
+        }
+        .cute-card input, .cute-card button {
+            font-family: 'Press Start 2P', monospace;
+        }
 
-        /* Input Field */
-        #code-input {
-            background-color: white;
-            border: 2px solid #87ceeb;
-            color: #4682b4;
-            caret-color: #4682b4; /* Blinking cursor color */
-            text-shadow: none; /* No glow on input text itself */
-            border-radius: 8px; /* Slightly rounded input */
-            padding: 12px 16px;
-            font-size: 0.9rem; /* Smaller for cuter look */
-            text-align: center;
-        }
-        #code-input:focus {
-            border-color: #4682b4; /* Darker blue on focus */
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.5); /* Soft focus ring */
-        }
-        /* Blinking Cursor Animation */
-        @keyframes blink-caret {
-            from, to { border-right-color: transparent }
-            50% { border-right-color: #4682b4; } /* Blinking effect for the caret */
-        }
+        /* Input Field */
+        #code-input {
+            background-color: white;
+            border: 2px solid #87ceeb;
+            color: #4682b4;
+            caret-color: #4682b4; /* Blinking cursor color */
+            text-shadow: none; /* No glow on input text itself */
+            border-radius: 8px; /* Slightly rounded input */
+            padding: 12px 16px;
+            font-size: 0.9rem; /* Smaller for cuter look */
+            text-align: center;
+        }
+        #code-input:focus {
+            border-color: #4682b4; /* Darker blue on focus */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.5); /* Soft focus ring */
+        }
+        /* Blinking Cursor Animation */
+        @keyframes blink-caret {
+            from, to { border-right-color: transparent }
+            50% { border-right-color: #4682b4; } /* Blinking effect for the caret */
+        }
 
-        /* Submit Button */
-        #submit-button {
-            background-color: #87ceeb; /* Sky blue button */
-            color: white;
-            font-weight: bold;
-            border-radius: 10px; /* Rounded button */
-            padding: 12px 16px;
-            font-size: 0.9rem;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-        }
-        #submit-button:hover {
-            background-color: #6aadda; /* Slightly darker on hover */
-            transform: translateY(-2px); /* Little lift effect */
-        }
-        #submit-button:active {
-            background-color: #4682b4; /* Even darker on click */
-            transform: translateY(0);
-        }
+        /* Submit Button */
+        #submit-button {
+            background-color: #87ceeb; /* Sky blue button */
+            color: white;
+            font-weight: bold;
+            border-radius: 10px; /* Rounded button */
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        #submit-button:hover {
+            background-color: #6aadda; /* Slightly darker on hover */
+            transform: translateY(-2px); /* Little lift effect */
+        }
+        #submit-button:active {
+            background-color: #4682b4; /* Even darker on click */
+            transform: translateY(0);
+        }
 
-        /* Message Display Area */
-        #message-display {
-            background-color: white;
-            border: 2px dashed #87ceeb; /* Dashed border for cuteness */
-            color: #4682b4;
-            border-radius: 10px;
-            text-shadow: none;
-            font-size: 1.1rem;
-            min-height: 80px; /* More space for message */
-            padding: 10px;
-        }
-        #message-display.success-message {
-            border-color: #4682b4;
-            color: #4682b4;
-        }
-        #message-display.error-message {
-            border-color: #ff69b4; /* Hot pink for errors */
-            color: #ff69b4;
-        }
+        /* Message Display Area */
+        #message-display {
+            background-color: white;
+            border: 2px dashed #87ceeb; /* Dashed border for cuteness */
+            color: #4682b4;
+            border-radius: 10px;
+            text-shadow: none;
+            font-size: 1.1rem;
+            min-height: 80px; /* More space for message */
+            padding: 10px;
+        }
+        #message-display.success-message {
+            border-color: #4682b4;
+            color: #4682b4;
+        }
+        #message-display.error-message {
+            border-color: #ff69b4; /* Hot pink for errors */
+            color: #ff69b4;
+        }
 
-        /* Floating Hearts Background */
-        .bg-heart {
-            position: absolute;
-            font-size: 2rem; /* Size of background hearts */
-            opacity: 0.3; /* Low opacity */
-            pointer-events: none;
-            animation: floatAndFade 15s infinite ease-in-out;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Soft white glow */
-        }
-        /* Individual heart colors */
-        .bg-heart.blue { color: #87ceeb; }
-        .bg-heart.white { color: white; }
+        /* Floating Hearts Background */
+        .bg-heart {
+            position: absolute;
+            font-size: 2rem; /* Size of background hearts */
+            opacity: 0.3; /* Low opacity */
+            pointer-events: none;
+            animation: floatAndFade 15s infinite ease-in-out;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Soft white glow */
+        }
+        /* Individual heart colors */
+        .bg-heart.blue { color: #87ceeb; }
+        .bg-heart.white { color: white; }
 
-        @keyframes floatAndFade {
-            0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.3; }
-            50% { transform: translate(var(--x-end), var(--y-end)) scale(1.2) rotate(360deg); opacity: 0.6; }
-            80% { opacity: 0.3; }
-            100% { transform: translate(0, 0) scale(0.5) rotate(720deg); opacity: 0; }
-        }
+        @keyframes floatAndFade {
+            0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.3; }
+            50% { transform: translate(var(--x-end), var(--y-end)) scale(1.2) rotate(360deg); opacity: 0.6; }
+            80% { opacity: 0.3; }
+            100% { transform: translate(0, 0) scale(0.5) rotate(720deg); opacity: 0; }
+        }
 
-        /* "Ur Cute <3" Background Text */
-        .bg-text {
-            position: absolute;
-            font-size: 1.5rem; /* Size of background text */
-            color: #87ceeb; /* Sky blue */
-            opacity: 0.2; /* Very low opacity */
-            pointer-events: none;
-            animation: textFloatAndFade 20s infinite ease-in-out;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle white glow */
-        }
+        /* "Ur Cute <3" Background Text */
+        .bg-text {
+            position: absolute;
+            font-size: 1.5rem; /* Size of background text */
+            color: #87ceeb; /* Sky blue */
+            opacity: 0.2; /* Very low opacity */
+            pointer-events: none;
+            animation: textFloatAndFade 20s infinite ease-in-out;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle white glow */
+        }
 
-        @keyframes textFloatAndFade {
-            0% { transform: translate(0, 0) scale(0.7) rotate(-10deg); opacity: 0; }
-            15% { opacity: 0.2; }
-            50% { transform: translate(var(--x-end-text), var(--y-end-text)) scale(1.1) rotate(10deg); opacity: 0.3; }
-            85% { opacity: 0.2; }
-            100% { transform: translate(0, 0) scale(0.7) rotate(-10deg); opacity: 0; }
-        }
+        @keyframes textFloatAndFade {
+            0% { transform: translate(0, 0) scale(0.7) rotate(-10deg); opacity: 0; }
+            15% { opacity: 0.2; }
+            50% { transform: translate(var(--x-end-text), var(--y-end-text)) scale(1.1) rotate(10deg); opacity: 0.3; }
+            85% { opacity: 0.2; }
+            100% { transform: translate(0, 0) scale(0.7) rotate(-10deg); opacity: 0; }
+        }
 
-        /* Confetti */
-        .confetti-piece {
-            position: absolute;
-            opacity: 0;
-            animation: confetti-fall 2s forwards ease-out;
-            pointer-events: none;
-            z-index: 9999;
-            font-size: 1.5rem; /* Adjust confetti heart size */
-            line-height: 1;
-        }
-        @keyframes confetti-fall {
-            0% { transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
-            10% { opacity: 1; transform: translateY(-50px) rotate(30deg) scale(1.5); }
-            100% { transform: translateY(100vh) rotate(720deg) scale(0.8); opacity: 0; }
-        }
+        /* Confetti */
+        .confetti-piece {
+            position: absolute;
+            opacity: 0;
+            animation: confetti-fall 2s forwards ease-out;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 1.5rem; /* Adjust confetti heart size */
+            line-height: 1;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(-50px) rotate(30deg) scale(1.5); }
+            100% { transform: translateY(100vh) rotate(720deg) scale(0.8); opacity: 0; }
+        }
 
-    </style>
+    </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
 
-    <!-- Background Floating Hearts and Text --><script>
-        // Generate background floating hearts
-        const createFloatingElement = (content, className, initialOpacity, animationDuration, delayOffset, xEndMin, xEndMax, yEndMin, yEndMax) => {
-            const element = document.createElement('div');
-            
-            // FIX: Split the className string by space and add each class token separately, 
-            // as classList.add() does not accept tokens containing spaces (e.g., "bg-heart blue").
-            className.split(' ').forEach(cls => {
-                if (cls.trim()) {
-                    element.classList.add(cls.trim());
-                }
-            });
-            
-            element.innerHTML = content;
-            element.style.left = Math.random() * 100 + 'vw';
-            element.style.top = Math.random() * 100 + 'vh';
-            element.style.opacity = initialOpacity;
-            element.style.animationDuration = animationDuration + (Math.random() * delayOffset) + 's';
-            element.style.animationDelay = (Math.random() * -animationDuration) + 's'; // Start at random points in animation cycle
+    <script>
+        // Generate background floating hearts
+        const createFloatingElement = (content, className, initialOpacity, animationDuration, delayOffset, xEndMin, xEndMax, yEndMin, yEndMax) => {
+            const element = document.createElement('div');
+            
+            // FIX: Split the className string by space and add each class token separately, 
+            // as classList.add() does not accept tokens containing spaces (e.g., "bg-heart blue").
+            className.split(' ').forEach(cls => {
+                if (cls.trim()) {
+                    element.classList.add(cls.trim());
+                }
+            });
+            
+            element.innerHTML = content;
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.top = Math.random() * 100 + 'vh';
+            element.style.opacity = initialOpacity;
+            element.style.animationDuration = animationDuration + (Math.random() * delayOffset) + 's';
+            element.style.animationDelay = (Math.random() * -animationDuration) + 's'; // Start at random points in animation cycle
 
-            // Only set the transform variables if the element uses the animation that needs them
-            if (className.includes('bg-heart')) {
-                element.style.setProperty('--x-end', (Math.random() * (xEndMax - xEndMin) + xEndMin) + 'vw');
-                element.style.setProperty('--y-end', (Math.random() * (yEndMax - yEndMin) + yEndMin) + 'vh');
-            } else if (className.includes('bg-text')) {
-                element.style.setProperty('--x-end-text', (Math.random() * (xEndMax - xEndMin) + xEndMin) + 'vw');
-                element.style.setProperty('--y-end-text', (Math.random() * (yEndMax - yEndMin) + yEndMin) + 'vh');
-            }
+            // Only set the transform variables if the element uses the animation that needs them
+            if (className.includes('bg-heart')) {
+                element.style.setProperty('--x-end', (Math.random() * (xEndMax - xEndMin) + xEndMin) + 'vw');
+                element.style.setProperty('--y-end', (Math.random() * (yEndMax - yEndMin) + yEndMin) + 'vh');
+            } else if (className.includes('bg-text')) {
+                element.style.setProperty('--x-end-text', (Math.random() * (xEndMax - xEndMin) + xEndMin) + 'vw');
+                element.style.setProperty('--y-end-text', (Math.random() * (yEndEnd - yEndMin) + yEndMin) + 'vh');
+            }
 
-            document.body.appendChild(element);
-        };
+            document.body.appendChild(element);
+        };
 
-        const heartCount = 40; // Number of background hearts
-        const textCount = 15; // Number of "Ur Cute <3" texts
+        const heartCount = 40; // Number of background hearts
+        const textCount = 15; // Number of "Ur Cute <3" texts
 
-        for (let i = 0; i < heartCount; i++) {
-            const heartChar = '&#x2665;'; // Heart Unicode
-            const colorClass = Math.random() > 0.5 ? 'blue' : 'white';
-            createFloatingElement(heartChar, `bg-heart ${colorClass}`, 0.3, 15, 5, -50, 50, -50, 50);
-        }
+        for (let i = 0; i < heartCount; i++) {
+            const heartChar = '&#x2665;'; // Heart Unicode
+            const colorClass = Math.random() > 0.5 ? 'blue' : 'white';
+            createFloatingElement(heartChar, `bg-heart ${colorClass}`, 0.3, 15, 5, -50, 50, -50, 50);
+        }
 
-        for (let i = 0; i < textCount; i++) {
-            const textContent = 'ur cute &lt;3';
-            createFloatingElement(textContent, 'bg-text', 0.2, 20, 10, -70, 70, -70, 70);
-        }
-    </script>
+        for (let i = 0; i < textCount; i++) {
+            const textContent = 'ur cute &lt;3';
+            createFloatingElement(textContent, 'bg-text', 0.2, 20, 10, -70, 70, -70, 70);
+        }
+    </script>
 
-    <!-- Main Cute Card Container --><div class="cute-card w-full max-w-sm p-6 md:p-8 relative z-10 transition-all duration-300">
-        <h1 class="text-3xl font-extrabold text-center mb-6 tracking-tighter cute-card-title text-glow-blue">
-            mwah ♥
-        </h1>
+    <div class="cute-card w-full max-w-sm p-6 md:p-8 relative z-10 transition-all duration-300">
+        <h1 class="text-3xl font-extrabold text-center mb-6 tracking-tighter cute-card-title text-glow-blue">
+            mwah ♥
+        </h1>
 
-        <!-- Prompt Text --><p class="text-center text-lg font-medium mb-6">
-            get one step closer to greatness
-        </p>
+        <p class="text-center text-lg font-medium mb-6">
+            get one step closer to greatness
+        </p>
 
-        <!-- Input Field (placeholder removed) --><input type="text" id="code-input" 
-               class="w-full mb-6"
-               autocapitalize="off" 
-               autocomplete="off">
+        <input type="text" id="code-input" 
+               class="w-full mb-6"
+               autocapitalize="off" 
+               autocomplete="off">
 
-        <!-- Submit Button --><button id="submit-button" 
-                class="w-full">
-            enter the codeword and click here if u like ur gf (me)
-        </button>
+        <button id="submit-button" 
+                class="w-full">
+            enter the codeword and click here if u like ur gf (me)
+        </button>
 
-        <!-- Message Display Area --><div id="message-display" 
-             class="mt-8 flex items-center justify-center text-center text-xl font-black transition-all duration-500">
-            <!-- Message will appear here --></div>
-    </div>
-    
-    <!-- Hint at the bottom --><p class="text-center text-xs mt-6 text-glow-blue z-10" style="color: #4682b4; text-shadow: 0 0 5px rgba(135, 206, 250, 0.7);">
-        (hint: two words )
-    </p>
+        <div id="message-display" 
+             class="mt-8 flex items-center justify-center text-center text-xl font-black transition-all duration-500">
+            </div>
+    </div>
+    
+    <p class="text-center text-xs mt-6 text-glow-blue z-10" style="color: #4682b4; text-shadow: 0 0 5px rgba(135, 206, 250, 0.7);">
+        (hint: two words )
+    </p>
 
 
-    <script>
-        // JavaScript logic for the code word check
-        const SECRET_CODE = '14 october' ; 
+    <script>
+        // JavaScript logic for the code word check
+        // 💖 CHANGE MADE HERE 💖
+        const SECRET_CODE = '14th october' ; 
 
-        // Get references to the elements
-        const inputField = document.getElementById('code-input');
-        const submitButton = document.getElementById('submit-button');
-        const messageDisplay = document.getElementById('message-display');
+        // Get references to the elements
+        const inputField = document.getElementById('code-input');
+        const submitButton = document.getElementById('submit-button');
+        const messageDisplay = document.getElementById('message-display');
 
-        /**
-         * Clears all dynamic styling classes from the message display.
-         */
-        function resetMessageStyle() {
-            messageDisplay.className = 'mt-8 flex items-center justify-center text-center text-xl font-black transition-all duration-500';
-        }
+        /**
+         * Clears all dynamic styling classes from the message display.
+         */
+        function resetMessageStyle() {
+            messageDisplay.className = 'mt-8 flex items-center justify-center text-center text-xl font-black transition-all duration-500';
+        }
 
-        /**
-         * Creates and launches confetti pieces with cute aesthetic.
-         */
-        function launchConfetti() {
-            const confettiCount = 60; // More confetti
-            const colors = ['#87ceeb', 'white', '#4682b4']; // Sky blue, white, steel blue
+        /**
+         * Creates and launches confetti pieces with cute aesthetic.
+         */
+        function launchConfetti() {
+            const confettiCount = 60; // More confetti
+            const colors = ['#87ceeb', 'white', '#4682b4']; // Sky blue, white, steel blue
 
-            for (let i = 0; i < confettiCount; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti-piece');
-                
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.color = color;
-                
-                confetti.style.left = Math.random() * 100 + 'vw'; 
-                confetti.style.top = -50 + 'px'; // Start higher
-                
-                const size = Math.random() * 20 + 15; // Larger hearts
-                confetti.innerHTML = '&#x2665;'; // Heart Unicode
-                confetti.style.fontSize = size + 'px';
-                confetti.style.lineHeight = '1';
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.color = color;
+                
+                confetti.style.left = Math.random() * 100 + 'vw'; 
+                confetti.style.top = -50 + 'px'; // Start higher
+                
+                const size = Math.random() * 20 + 15; // Larger hearts
+                confetti.innerHTML = '&#x2665;'; // Heart Unicode
+                confetti.style.fontSize = size + 'px';
+                confetti.style.lineHeight = '1';
 
-                confetti.style.textShadow = `0 0 ${size / 5}px rgba(255,255,255,0.7)`; // Soft glow for confetti
-                
-                confetti.style.animationDelay = Math.random() * 1.8 + 's';
+                confetti.style.textShadow = `0 0 ${size / 5}px rgba(255,255,255,0.7)`; // Soft glow for confetti
+                
+                confetti.style.animationDelay = Math.random() * 1.8 + 's';
 
-                document.body.appendChild(confetti);
+                document.body.appendChild(confetti);
 
-                confetti.addEventListener('animationend', () => {
-                    confetti.remove();
-                });
-            }
-        }
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
 
-        /**
-         * Checks the entered code word and updates the display.
-         */
-        function checkCode() {
-            const userInput = inputField.value.trim().toLowerCase();
-            resetMessageStyle(); 
+        /**
+         * Checks the entered code word and updates the display.
+         */
+        function checkCode() {
+            const userInput = inputField.value.trim().toLowerCase();
+            resetMessageStyle(); 
 
-            if (userInput === SECRET_CODE) {
-                // Correct code word (Success: Blue/White)
-                messageDisplay.textContent = 'i love u babyyy';
-                messageDisplay.classList.add('success-message', 'cute-card', 'text-glow-blue'); // Re-apply card styles
-                launchConfetti(); 
-            } else {
-                // Incorrect code word (Failure: Hot Pink)
-                messageDisplay.textContent = 'try again loserrr';
-                messageDisplay.classList.add('error-message', 'cute-card'); // Re-apply card styles
-            }
-        }
+            if (userInput === SECRET_CODE) {
+                // Correct code word (Success: Blue/White)
+                messageDisplay.textContent = 'i love u babyyy';
+                messageDisplay.classList.add('success-message', 'cute-card', 'text-glow-blue'); // Re-apply card styles
+                launchConfetti(); 
+            } else {
+                // Incorrect code word (Failure: Hot Pink)
+                messageDisplay.textContent = 'try again loserrr';
+                messageDisplay.classList.add('error-message', 'cute-card'); // Re-apply card styles
+            }
+        }
 
-        // Event listener for the button click
-        submitButton.addEventListener('click', checkCode);
+        // Event listener for the button click
+        submitButton.addEventListener('click', checkCode);
 
-        // Event listener for the 'Enter' key press on the input field
-        inputField.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault(); 
-                checkCode();
-            }
-        });
+        // Event listener for the 'Enter' key press on the input field
+        inputField.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                checkCode();
+            }
+        });
 
-        // Initialize the message display with the default style
-        resetMessageStyle();
-        messageDisplay.classList.add('cute-card', 'text-glow-blue'); // Initial message also gets card styling
-        messageDisplay.textContent = 'awaiting ur command';
+        // Initialize the message display with the default style
+        resetMessageStyle();
+        messageDisplay.classList.add('cute-card', 'text-glow-blue'); // Initial message also gets card styling
+        messageDisplay.textContent = 'awaiting ur command';
 
-    </script>
+    </script>
 </body>
 </html>
